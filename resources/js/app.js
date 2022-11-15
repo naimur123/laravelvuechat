@@ -8,8 +8,9 @@ import './bootstrap';
 import '../sass/app.scss'
 import { createApp } from 'vue';
 
-// import ExammpleComponent from './components/ExampleComponent.vue'
-import Messages from './components/Messages.vue'
+import ExammpleComponent from './components/ExampleComponent.vue'
+// import Messages from './components/Messages.vue'
 
 
-createApp(Messages).mount('#messenger');
+// createApp(Messages).mount('#messenger');
+createApp(ExammpleComponent).mount('#app');

@@ -38,6 +38,10 @@ class HomeController extends Controller
         //     else
         //         echo $user->name . " is offline. Last seen: " . Carbon::parse($user->last_seen)->diffForHumans() . " <br>";
         // }
-        return view('home',compact('users'));
+        $params = [
+            'title' => "home",
+            'users' => $users
+        ];
+        return view('home',$params);
     }
 }

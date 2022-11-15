@@ -10,25 +10,25 @@ use Illuminate\Support\Facades\DB;
 
 class MessageController extends Controller
 {
-    public function index(Request $request){
-        // echo $request->to;
-    //    $message = Message::select('message')
-    //         ->where('to',$request->to)
-    //         ->groupBy('from')
-    //         ->get();
-    //    $last_date_created = Message::latest()->first()->created_at; // also check for possible null
+    public function index($to){
+        
+       $users = User::where('id','!=',Auth::user()->id)->get();
+       $rcv = User::where('id',$to)->first(['name'])->name;
+       $message =  Message::where(function($q) use ($to) {
+                    $q->where('from', auth()->id());
+                    $q->where('to', $to);
+            })->orWhere(function($q) use ($to) {
+                    $q->where('from', $to);
+                    $q->where('to', auth()->id());
+            })->get();
 
-    //     // Get the date only - use to specify date range in the where section in the eloquent query
-    //     $target_date = date('Y-m-d', strtotime( $last_date_created ) );
-
-    //    $message = Message::where('to', $request->id)
-    //                         ->where('created_at', '>=', $target_date . ' 00:00:00')
-    //                         ->where('created_at', '<=',  $target_date . ' 23:59:59')
-    //                         ->groupBy('from')
-    //                         ->groupBy('created_at')
-    //                         ->get();
+            $params = [
+                'title' => "messages",
+                'messages' => $message,
+                'users' => $users,
+                'rcv'=> $rcv
+            ];
             
-    //    echo $message;
-
+        return view('home',$params);
     }
 }

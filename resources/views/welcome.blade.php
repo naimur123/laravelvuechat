@@ -15,9 +15,9 @@
         
     </head>
     <body class="antialiased">
-        {{-- <div id="app">
+        <div id="app">
             <ExampleComponent></ExampleComponent>
-        </div> --}}
+        </div>
         
        
     </body>

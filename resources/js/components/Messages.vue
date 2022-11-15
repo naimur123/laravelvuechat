@@ -1,15 +1,31 @@
 <template>
-     <div class="message-data text-right">                        
-        <span class="message-data-time">10:10 AM, Today</span>
-        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="avatar">
-     </div>
-    <div class="message other-message float-right"> Hi Aiden, how are you? How is the project coming along? </div>
+    
 </template>
 
 <script>
+import axios from 'axios';
     export default {
+        // data(){
+        //     return {
+                
+        //         message:[],
+
+        //     }
+
+        // },
         mounted() {
             console.log('Component mounted.')
-        }
+        },
+        // methods:{
+        //     fetchAll(){
+        //     try{
+        //         axios.get('')
+        //        .then(res=> this.list = res.data)
+        //     }catch(e){
+        //        console.log(e)
+        //     }
+               
+        //     },
+        // }
     }
 </script>
